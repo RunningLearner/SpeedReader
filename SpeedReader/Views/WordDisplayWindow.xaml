@@ -5,6 +5,63 @@
         WindowStartupLocation="CenterOwner"
         ShowInTaskbar="True"
         Background="#FF2D2D30">
+    <Window.Resources>
+        <!-- 버튼 기본 스타일 -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF44475A"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF6272A4"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="4"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- 체크박스 기본 스타일 -->
+        <Style TargetType="CheckBox">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <!-- 체크박스 내부 박스 색상 커스터마이징 -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal">
+                            <Border x:Name="Box"
+                                    Width="16" Height="16"
+                                    Background="#FF44475A"
+                                    BorderBrush="#FF6272A4"
+                                    BorderThickness="1"
+                                    CornerRadius="2"
+                                    Margin="0,0,4,0"/>
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Box" Property="Background" Value="#FF50FA7B"/>
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Box" Property="BorderBrush" Value="#FF8BE9FD"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
     <Grid>
         <Grid.RowDefinitions>
             <!-- 1: 컨트롤(자동 모드 + 글자 크기 조정) / 2: 단어 표시 -->
