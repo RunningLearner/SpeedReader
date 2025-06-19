@@ -76,7 +76,7 @@ public partial class WordDisplayWindow : Window
         Focusable = true;
         Focus();
 
-        AutoModeCheckBox.IsChecked = true;
+        AutoModeCheckBox.IsChecked = false;
     }
 
     #endregion
